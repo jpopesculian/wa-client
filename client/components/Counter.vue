@@ -1,14 +1,21 @@
 <template>
-  <div class="counter" @click="$store.dispatch('incrementAsync')">
+  <div class="counter" @click="increment">
     {{ count }}
   </div>
 </template>
 
 <script>
+import * as events from '../store/types'
+
 export default {
   computed: {
     count() {
-      return this.$store.state.count
+      return this.$store.state.counter.count
+    }
+  },
+  methods: {
+    increment() {
+      return this.$store.dispatch(events.IncrementCountAsync)
     }
   }
 }
